@@ -32,4 +32,4 @@ def takecommand():
         print("say that again please....")
         return "none"
     return query
-  
+ #yas anila her 
