@@ -22,5 +22,14 @@ def takecommand():
     with sr.microphone() as source:
         print("listening")
         r.pause_threshold=1   #seconds of nonspeaking audio before a phrase is considered complete
-        
+        audio=r.listen(source)
+    try:
+        print("recognizing")
+        query=r.recognize_google(audio,language="en-in")
+        print(f"user said: {query}\n")
+        speak(f"user said: {query}\n")
+    except Exception as e:
+        print("say that again please....")
+        return "none"
+    return query
   
