@@ -2,6 +2,9 @@
 import pyttsx3
 import speech_recognition as sr
 import datetime
+import webbrowser
+import keyboard
+import pyautogui
 
 
 engine=pyttsx3.init("sapi5")   #this is used to take voices
@@ -32,4 +35,21 @@ def takecommand():
         print("say that again please....")
         return "none"
     return query
- #yas anila her 
+ #yas anila her
+ def YoutubeAuto():     #for youtube automation
+     speak("sir,plz tell your command")
+     command=takecommand()
+     
+     if "pause" in command:
+         keyboard.press('space bar')
+     elif "restart" in command:
+         keyboard.press('0')
+     elif "skip" in command:
+         keyboard.press('1')
+     elif "back" in command:
+         keyboard.press('j')
+     elif "full screen" in command:
+         keyboard.press('f')
+     elif "film mode" in command:
+         keyboard.press('t')
+     speak("your work is done sir")
