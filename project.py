@@ -99,9 +99,22 @@ if __name__=="__main__":
             print(songs)
             A = random.randint(0,2)
             os.startfile(os.path.join(music_dir,songs[A]))
-            
-                   
+        elif "wikipedia" in query:
+            speak("searching wikipedia")
+            query=query.replace("wikipedia","") #wikipedia replaced by blank so that the remaining part is searched by jarvis
+            result=wikipedia.summary(query,sentence=5) #kya search kiya,kitne sentence in info milegi  
+            speak("according to Wikipedia")
+            print(result)
+            speak(result)
+        elif "youtube search" in query: #open youtube and searching what we want
+            speak("ok sir,with the following info i can help you")
+            query = query.replace("jarvis","") # so we will replace jarvis and YouTube search so that they will not be in our search
+            query = query.replace("youtube search","")
+            web = "https://www.youtube.com/result?search_query=" +query # so if we see on youtube when we search so it comes after this string hence added query to that
+            webbrower.open(web)
+            speak("sir your work is done")
         #if we want to know the time
+                   
         elif "the time" in query:
             strTime=datetime.datetime.now().strftime("%H:%M:%S")
             print(strTime)
