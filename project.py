@@ -81,3 +81,20 @@ def openApps():
      elif "film mode" in command:
          keyboard.press('t')
      speak("your work is done sir")
+if __name__=="__main__":
+    speak("our group consists 3 members")
+    wishme()
+    while True:
+        query = takecommand().lower()
+        #if we want to play music so os module used
+        if "play music" in query:
+            music_dir="music,py"
+            songs=os.listdir(music_dir)
+            print(songs)
+            A = random.randint(0,2)
+            os.startfile(os.path.join(music_dir,songs[A]))
+                   
+                   
+                   
+        
+            
