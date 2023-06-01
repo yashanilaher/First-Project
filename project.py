@@ -99,7 +99,13 @@ if __name__=="__main__":
             print(songs)
             A = random.randint(0,2)
             os.startfile(os.path.join(music_dir,songs[A]))
+            
                    
+        #if we want to know the time
+        elif "the time" in query:
+            strTime=datetime.datetime.now().strftime("%H:%M:%S")
+            print(strTime)
+            speak(strTime)           
                    
                    
         
