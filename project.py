@@ -62,7 +62,13 @@ def openApps():
         webbrowers.open('instagram.com')
     elif "open googlemap" in query:
         webbrowers.open('googlemaps.com')
-    
+    elif "open flipkart" in query:
+        webbrowers.open('www.flipkart.com')
+    elif "open amazon" in query:
+        webbrowers.open('www.amazon.in')
+    elif "open netflix" in query:
+        webbrowers.open('www.netflix.in')
+                   
     speak("sir, your website is opened")               
  def YoutubeAuto():     #for youtube automation
      speak("sir,plz tell your command")
