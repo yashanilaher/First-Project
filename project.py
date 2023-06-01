@@ -17,8 +17,17 @@ engine.setProperty("rate",150)   #rate with which jarvis speaks
 def speak(audio):
     engine.say(audio)     #this audio will be said by engine for that runAndWait() function is used
     engine.runAndWait()
-    
-    
+                   
+def wishme():
+    hour = int(datetime.datetime.now().hour)
+    if hour>=0 and hour<12:
+        speak("good morning")
+    elif hour>=12 and hour<12:
+        speak("good afternoon")
+    else:
+        speak("good evening")
+    speak("i am jarvis. tell me how i can help you")
+                   
 def takecommand():
     #it takes our voice from microphone as input and return in the form of string output
     r=sr.Recognizer()
@@ -35,7 +44,26 @@ def takecommand():
         print("say that again please....")
         return "none"
     return query
- #yas anila her
+def openApps():
+    speak("sir wait for a while")               
+    if "open youtube" in query:
+        webbrowers.open('youtube.com')               
+    elif "open google" in query:               
+        webbrowers.open('google.com')
+    elif "open spotify" in query:               
+        webbrowers.open('spotify.com')
+    elif "open whatsapp" in query:               
+        webbrowers.open('web.whatsapp.com')           
+    elif "open stackoverflow" in query:
+        webbrowers.open('stackoverflow.com')
+    elif "open facebook" in query:
+        webbrowers.open('facebook.com')
+    elif "open instagram" in query:
+        webbrowers.open('instagram.com')
+    elif "open googlemap" in query:
+        webbrowers.open('googlemaps.com')
+    
+    speak("sir, your website is opened")               
  def YoutubeAuto():     #for youtube automation
      speak("sir,plz tell your command")
      command=takecommand()
