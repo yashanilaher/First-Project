@@ -5,6 +5,7 @@ import datetime
 import webbrowser
 import keyboard
 import pyautogui
+import smtplib
 
 
 engine=pyttsx3.init("sapi5")   #this is used to take voices
@@ -87,6 +88,21 @@ def openApps():
      elif "film mode" in command:
          keyboard.press('t')
      speak("your work is done sir")
+                   
+ def send_Email(to,subject,content):
+    server=smtplib.SMTP("smtp.gmail.com",587)   #587 is a port ie (host,port)
+    f1=open("email.txt","r")  #keep password if possible in textfile for security reason
+    f2=open('password.txt',"r")
+    sender_email=f1.read()
+    password=f2.read()
+    server.ehlo()
+    server.starttls()
+    server.login(sender_email,password)    
+    message=f'subject:{subject}\n\n{content}'
+    server.sendmail("yashaher481@gmail.com",to,message)
+    server.close()                  
+                   
+                   
 if __name__=="__main__":
     speak("our group consists 3 members")
     wishme()
@@ -118,7 +134,21 @@ if __name__=="__main__":
         elif "the time" in query:
             strTime=datetime.datetime.now().strftime("%H:%M:%S")
             print(strTime)
-            speak(strTime)           
+            speak(strTime)  
+                   
+        # to send email   #see how to use that dic wala part
+        elif "send mail" in query:
+            try:   #try and except as if problem comes
+                speak("what should i speak")   
+                content=takecommand() 
+                f=open("emailto.txt","r")
+                to=f.read()
+                subject=takecommand()
+                send_Email(to,subject,content)
+                speak('succesfully email sended')
+            except Exception as e:
+                print(e)  #printed error as will get to know what is error    
+                speak("plz try again mail not sended")           
                    
                    
         
