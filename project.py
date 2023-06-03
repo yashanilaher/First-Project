@@ -136,7 +136,7 @@ if __name__=="__main__":
             print(strTime)
             speak(strTime)  
                    
-        # to send email   #see how to use that dic wala part
+        # to send email   
         elif "send mail" in query:
             try:   #try and except as if problem comes
                 speak("what should i speak")   
