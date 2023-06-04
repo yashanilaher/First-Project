@@ -91,7 +91,36 @@ def openApps():
      elif "film mode" in command:
          keyboard.press('t')
      speak("your work is done sir")
-                   
+ def chromeauto():
+    speak("sir,plz tell your command")
+    command=tell()
+
+    if "close this tab" in command:
+        keyboard.press_and_release("ctrl+w")    #we have to click these simulataneously
+    
+    elif "open new tab" in command:
+        keyboard.press_and_release("ctrl+t")
+    
+    elif "zoom out" in command:
+        keyboard.press_and_release("ctrl+ -")
+    
+    elif "select everything on page" in command:
+        keyboard.press_and_release("ctrl+ a")
+    
+    elif "download page in new tab" in command:
+        keyboard.press_and_release("ctrl+j")
+
+    elif "open browser window" in command:
+        keyboard.press_and_release("ctrl+n") 
+    
+    elif "refresh the page" in command:
+        keyboard.press_and_release("ctrl+r") 
+    
+    elif "history" in command:
+        keyboard.press_and_release("ctrl+h")    
+
+    speak("your work is done sir")
+                    
  def send_Email(to,subject,content):
     server=smtplib.SMTP("smtp.gmail.com",587)   #587 is a port ie (host,port)
     f1=open("email.txt","r")  #keep password if possible in textfile for security reason
@@ -208,6 +237,78 @@ if __name__=="__main__":
         elif "repeat my words" in query:
             speak("sir plz do speak")
             l=tell()
-            speak(f"you said:{l}")          
+            speak(f"you said:{l}")    
+                    
+        #os module require to open any application available on dexstop
+        elif "open code" in query:
+            codepath="C:\\Users\\SAMRUDDHI ANIL AHER\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            os.startfile(codepath)
+                    
+        #if want to take screenshot
+        elif "screenshot" in query:
+            ss=pyautogui.screenshot("screenshot.png")
+            # ss.save("screenshot.txt")      #screen shot will be saved in that file  and if we do it multiple times so next image ill be replaced by the older one in that file
+            speak("sir screenshot taken")
+
+
+        #if want to click photo
+        elif "click my photo" in query:   #so due to this it will say smile and will click photo
+            pyautogui.press("super")
+            pyautogui.typewrite("camera")
+            pyautogui.press("enter")
+            pyautogui.sleep(2)   #will delay or sleep it for 2 sec
+            speak("SMILE")
+            pyautogui.press("enter")
+                    
+         #for automating youtube
+        elif "youtube start" in query:    #this function every time we need to call for a ny command
+            YoutubeAuto()                      # so if we directly also call command it will work directly as wrote below also
         
+        if "pause" in query:
+            keyboard.press('space bar')
+
+        elif "restart" in query:
+            keyboard.press('0')
+
+        elif "skip" in query:
+            keyboard.press('l')
+
+        elif "back" in query:
+            keyboard.press('j')
+
+        elif "full screen" in query:
+            keyboard.press('f')
+
+        elif "film mode" in query:
+            keyboard.press('t') 
+
+          
+        #for automating chrome
+        elif "google start" in query:   #this function every time we need to call for any command
+            chromeauto()                  # so if we directly also call command it will work directly as wrote below also
+        
+        elif "close this tab" in query:
+            keyboard.press_and_release("ctrl+w")    #we have to click these simulataneously
+    
+        elif "open new tab" in query:
+            keyboard.press_and_release("ctrl+t")
+    
+        elif "zoom out" in query:
+            keyboard.press_and_release("ctrl+ -")
+    
+        elif "download page in new tab" in query:
+            keyboard.press_and_release("ctrl+j")
+    
+        elif "select everything on page" in query:
+            keyboard.press_and_release("ctrl+a")
+        
+        elif "open browser window" in query:
+            keyboard.press_and_release("ctrl+n") 
+    
+        elif "refresh the page" in query:
+            keyboard.press_and_release("ctrl+r") 
+    
+        elif "history" in query:
+            keyboard.press_and_release("ctrl+h") 
+
             
