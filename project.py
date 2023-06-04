@@ -6,20 +6,23 @@ import webbrowser
 import keyboard
 import pyautogui
 import smtplib
+import pywhatkit   #this module used for seachin results on google
+import pyautogui  #this module needed for screen shot 
+import keyboard
+import pyjokes
 
-
-engine=pyttsx3.init("sapi5")   #this is used to take voices
-voices=engine.getProperty("voices")
+machinw=pyttsx3.init("sapi5")   #this is used to take voices
+voices=machine.getProperty("voices")
 # it contains two voices one male and one female
-engine.setProperty("voice,voices[0].id)
-engine.setProperty("rate",150)   #rate with which jarvis speaks
+machine.setProperty("voice,voices[0].id)
+machine.setProperty("rate",150)   #rate with which jarvis speaks
 
 
 def speak(audio):
-    engine.say(audio)     #this audio will be said by engine for that runAndWait() function is used
-    engine.runAndWait()
+    machine.say(audio)     #this audio will be said by engine for that runAndWait() function is used
+    machine.runAndWait()
                    
-def wishme():
+def wishuser():
     hour = int(datetime.datetime.now().hour)
     if hour>=0 and hour<12:
         speak("good morning")
@@ -29,16 +32,16 @@ def wishme():
         speak("good evening")
     speak("i am jarvis. tell me how i can help you")
                    
-def takecommand():
+def tell():
     #it takes our voice from microphone as input and return in the form of string output
-    r=sr.Recognizer()
-    with sr.microphone() as source:
+    r=sr.Recognizer() # class bna diya
+    with sr.microphone() as source:   # isko source bna diya
         print("listening")
         r.pause_threshold=1   #seconds of nonspeaking audio before a phrase is considered complete
         audio=r.listen(source)
     try:
         print("recognizing")
-        query=r.recognize_google(audio,language="en-in")
+        query=r.recognize_google(audio,language="en-in") # thus function is taking an audio and just returning it into astring
         print(f"user said: {query}\n")
         speak(f"user said: {query}\n")
     except Exception as e:
@@ -105,9 +108,9 @@ def openApps():
                    
 if __name__=="__main__":
     speak("our group consists 3 members")
-    wishme()
+    wishuser()
     while True:
-        query = takecommand().lower()
+        query = tell().lower()
         #if we want to play music so os module used
         if "play music" in query:
             music_dir="music,py"
@@ -115,6 +118,7 @@ if __name__=="__main__":
             print(songs)
             A = random.randint(0,2)
             os.startfile(os.path.join(music_dir,songs[A]))
+                    
         elif "wikipedia" in query:
             speak("searching wikipedia")
             query=query.replace("wikipedia","") #wikipedia replaced by blank so that the remaining part is searched by jarvis
@@ -122,6 +126,34 @@ if __name__=="__main__":
             speak("according to Wikipedia")
             print(result)
             speak(result)
+                    
+        elif "open youtube" in query:
+            openApps()
+            
+        elif "open google" in query:
+            openApps()
+           
+        elif "open spotify" in query:
+            openApps()
+            
+        elif "open whatsapp" in query:
+            openApps()            
+
+        elif "open stackoverflow" in query:
+            openApps()           
+
+        elif "open facebook" in query:
+            openApps()
+
+        elif "open instagram" in query:
+            openApps()
+            
+        elif "maps" in query:
+            openApps()         
+                    
+                    
+                    
+                    
         elif "youtube search" in query: #open youtube and searching what we want
             speak("ok sir,with the following info i can help you")
             query = query.replace("jarvis","") # so we will replace jarvis and YouTube search so that they will not be in our search
@@ -129,8 +161,24 @@ if __name__=="__main__":
             web = "https://www.youtube.com/result?search_query=" +query # so if we see on youtube when we search so it comes after this string hence added query to that
             webbrower.open(web)
             speak("sir your work is done")
+                    
+        #opening google and searching what we want  
+        elif "google search" in query:
+            speak("hello sir , i got this for what you seached")
+            query=query.replace("jarvis","")
+            query=query.replace("google search","")
+            pywhatkit.search(query)  
+            speak("your work is done sir")
+                    
+         # way to open a website
+        elif "launch website" in query:
+            speak("sir plz tell the name of website")
+            name=tell()   # so jarvis will take command from user 
+            web="https://www."+name+".com" 
+            webbrowser.open(web)
+            speak("sir, your work is done")
+                    
         #if we want to know the time
-                   
         elif "the time" in query:
             strTime=datetime.datetime.now().strftime("%H:%M:%S")
             print(strTime)
@@ -140,16 +188,26 @@ if __name__=="__main__":
         elif "send mail" in query:
             try:   #try and except as if problem comes
                 speak("what should i speak")   
-                content=takecommand() 
+                content=tell() 
                 f=open("emailto.txt","r")
                 to=f.read()
-                subject=takecommand()
+                subject=tell()
                 send_Email(to,subject,content)
                 speak('succesfully email sended')
             except Exception as e:
                 print(e)  #printed error as will get to know what is error    
-                speak("plz try again mail not sended")           
-                   
-                   
+                speak("plz try again mail not sended")  
+                    
+          
+        #joke will be told by jarvis
+        elif "joke" in query:
+            j=pyjokes.get_joke()
+            speak(j)       
+        
+        #my word repetition ie it will repeat what user will say
+        elif "repeat my words" in query:
+            speak("sir plz do speak")
+            l=tell()
+            speak(f"you said:{l}")          
         
             
