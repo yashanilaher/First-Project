@@ -14,6 +14,7 @@ a) project goals and scope: As we said earlier these days AI growth is fabulous.
 These is a basic tool what we have made but a complex thing containing computing technology, scientists and innovators are trying to develop a system that can 
 think like a human. And who in this world will not like to have technology like this. And as python was new for each of us member, we were not 
 able to learn machine learning in given time, so we were not able to add open AI.so, our goals will be to add stuffs like open AI in this after evaluation also.
+
 b) Project Timeline: we people started searching ideas for our project nearly 18-20 days before. We decided to make this Jarvis on 19th May.
 
 20th May: 
