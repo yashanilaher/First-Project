@@ -19,7 +19,6 @@ def play_gif():  # will run gif with the help of tkinter
     lb.place(x=0, y=0)  # label is place at (x=0 and y=0)
 
     # will run the loop which will blit image on screen so that gif will be visible
-    i = 0
     mixer.music.load("bomb.mp3")  # playing music
     mixer.music.play()
 
