@@ -170,7 +170,7 @@ def send_Email(to, subject, content):
 # using pydictionary will get the meaning of any word
 # if we give input in form ( jarvis what is the meaning/synonym/antonym of {word})
 
-def dict():  ##################################
+def dict():  
     speak("activated dictionary")
     speak("tell me the problem")
     problem = tell()
@@ -182,23 +182,6 @@ def dict():  ##################################
         result = Diction.meaning(problem)
         print(result)
         speak(f"THe Meaning for {problem} is {result}")
-
-    if "synonym" in problem:  #######################
-        problem = problem.replace("what is the", "")
-        # problem=problem.replace("jarvis","")
-        problem = problem.replace("synonym of", "")
-        result = Diction.synonym(problem)
-        print(result)
-        speak(f"THe Meaning for {problem} is {result}")
-
-    if "antonym" in problem:  #####################
-        problem = problem.replace("what is the", "")
-        # problem=problem.replace("jarvis","")
-        problem = problem.replace("antonym of", "")
-        result = Diction.antonym(problem)
-        print(result)
-        speak(f"THe Meaning for {problem} is {result}")
-
     speak("exited dictionary")
 
 
@@ -382,7 +365,7 @@ if __name__ == "__main__":
             l = tell()
             speak(f"you said:{l}")
 
-        elif "dictionary" in query:  ###############
+        elif "dictionary" in query:  
             dict()
 
         # to quit 
