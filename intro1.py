@@ -11,7 +11,7 @@ root.geometry("800x800")
 
 
 def play_gif():  # will run gif with the help of tkinter
-    root.lift()
+    root.lift()  # it will bring it at top of widgets 
     root.attributes("-topmost", True)
     global img
     img = Image.open("giphy.gif")
