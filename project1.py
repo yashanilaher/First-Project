@@ -12,7 +12,7 @@ import keyboard
 import pyjokes
 from PyDictionary import PyDictionary as Diction
 
-from intro import play_gif
+from intro1 import play_gif
 
 play_gif
 
