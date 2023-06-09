@@ -240,7 +240,7 @@ if __name__ == "__main__":
 
             # opening google and searching what we want
         elif "google search" in query:
-            speak("hello sir , i got this for what you seached")
+            speak("hello sir , i got this for what you searched")
             query = query.replace("jarvis", "")
             query = query.replace("google search", "")
             pywhatkit.search(query)
