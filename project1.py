@@ -16,7 +16,7 @@ from intro1 import play_gif
 
 play_gif
 
-machine = pyttsx3.init('sapi5')  # this is used to take voices
+machine = pyttsx3.init('sapi5')  # this is used to take voices , here it initializes a TTS engine
 voices = machine.getProperty('voices')
 # print(voices[1].id)   #have two voices one male and one female
 machine.setProperty('voice', voices[0].id)
